@@ -14,8 +14,8 @@ const Navbar = () => {
         <div className="absolute pl-8 font-bold text-white r-4 z-1000 md:static">
           <a href="/">
             <img
-              className="h-[40px] w-[120px]"
-              src="/images/logo1.png"
+              className="h-[55px] w-[110px]"
+              src="/images/logo.png"
               alt="Logo"
             ></img>
           </a>
@@ -28,18 +28,30 @@ const Navbar = () => {
           }
         >
           <li>
-            <Link to={"/"} onClick={() => setOpen(false)}>
+            <Link
+              to={"/"}
+              onClick={() => setOpen(false)}
+              className="p-2 rounded hover:bg-violet-600 active:bg-violet-700 focus:ring focus:ring-violet-300"
+            >
               Home
             </Link>
           </li>
 
           <li>
-            <Link to={"/about"} onClick={() => setOpen(false)}>
+            <Link
+              to={"/about"}
+              onClick={() => setOpen(false)}
+              className="p-2 rounded hover:bg-violet-600 active:bg-violet-700 focus:ring focus:ring-violet-300"
+            >
               About
             </Link>
           </li>
           <li>
-            <Link to={"/contact"} onClick={() => setOpen(false)}>
+            <Link
+              to={"/contact"}
+              onClick={() => setOpen(false)}
+              className="p-2 rounded hover:bg-violet-600 active:bg-violet-700 focus:ring focus:ring-violet-300"
+            >
               Contact Us
             </Link>
           </li>
@@ -47,7 +59,7 @@ const Navbar = () => {
             <Link
               to={"https://techeify.beehiiv.com/"}
               onClick={() => setOpen(false)}
-              className="bg-[#3b3bcb] rounded-[8px] py-2 px-4 text-white font-bold"
+              className="bg-violet-700 rounded-[8px] py-2 px-4 text-white font-bold"
             >
               Post
             </Link>
@@ -56,7 +68,7 @@ const Navbar = () => {
             <Link
               to={"https://techeify.beehiiv.com/subscribe"}
               onClick={() => setOpen(false)}
-              className="bg-[#3b3bcb] rounded-[8px] p-2 text-white font-bold"
+              className="bg-violet-700 rounded-[8px] p-2 text-white font-bold"
             >
               Subscribe
             </Link>
