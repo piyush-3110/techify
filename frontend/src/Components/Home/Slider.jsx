@@ -17,29 +17,11 @@ export const Slider = () => {
   useEffect(() => {
     getData();
   }, []);
-  console.log(typeof news);
+
   return (
     <>
       <div>
         <Marquee speed={50} pauseOnHover={true}>
-          {news.map((data, index) => (
-            <div key={index} className="mx-[1rem]">
-              <a
-                href={data.url}
-                key={index}
-                rel="noreferrer"
-                target="_blank"
-                className="text-slate-300"
-              >
-                {" "}
-                {data.title}
-              </a>
-            </div>
-          ))}
-        </Marquee>
-      </div>
-      <div className="my -[4rem]">
-        <Marquee speed={50} pauseOnHover={true} direction="right">
           {news.map((data, index) => (
             <div key={index} className="mx-[1rem]">
               <a
