@@ -116,7 +116,7 @@ const BitcoinNews = ({ url, headers, Source }) => {
 
   return (
     <>
-      <div className="flex w-[100vw] justify-center">
+      <div className="flex w-[95vw] justify-center">
         <div>
           <h2 className="p-4 text-3xl font-bold text-indigo-300">{Source}</h2>
           <div className="">
@@ -132,7 +132,9 @@ const BitcoinNews = ({ url, headers, Source }) => {
                     />
 
                     <a href={info.url}>
-                      <p className="text-[1rem]">{info.title}</p>
+                      <p className="text-[0.95rem] text-gray-300">
+                        {info.title}
+                      </p>
                     </a>
                   </div>
                   <div className="h-[15px] w-[15px] ">

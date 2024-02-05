@@ -2,6 +2,7 @@ import BitcoinNews1 from "./Containers/BitcoinNews1";
 import { Slider } from "./Slider";
 
 import TradingViewWidget from "./TradingViewWidget";
+import { Youtube } from "./Youtube";
 
 const Home = () => {
   const url1 = "https://cryptocurrency-news2.p.rapidapi.com/v1/coindesk";
@@ -43,16 +44,23 @@ const Home = () => {
         <BitcoinNews1 url={url2} headers={headers2} Source="CoinTelegraph" />
         <BitcoinNews1 url={url3} headers={headers3} Source="Decrypt" />
       </div>
-      <div className="my-5 sm:flex ">
-        <BitcoinNews1 url={url1} headers={headers1} Source="CoinDesk" />
-        <BitcoinNews1 url={url2} headers={headers2} Source="CoinTelegraph" />
-        <BitcoinNews1 url={url3} headers={headers3} Source="Decrypt" />
-      </div>
+
       <Slider
         url={
           "https://newsapi.org/v2/top-headlines?country=in&category=technology&apiKey=954e71bbb32945b4b9731ac371cd59e1"
         }
       />
+      <Youtube />
+      <div className="my-5 sm:flex ">
+        <BitcoinNews1 url={url1} headers={headers1} Source="CoinDesk" />
+        <BitcoinNews1 url={url2} headers={headers2} Source="CoinTelegraph" />
+        <BitcoinNews1 url={url3} headers={headers3} Source="Decrypt" />
+      </div>
+      <div className="my-5 sm:flex ">
+        <BitcoinNews1 url={url1} headers={headers1} Source="CoinDesk" />
+        <BitcoinNews1 url={url2} headers={headers2} Source="CoinTelegraph" />
+        <BitcoinNews1 url={url3} headers={headers3} Source="Decrypt" />
+      </div>
     </div>
   );
 };
