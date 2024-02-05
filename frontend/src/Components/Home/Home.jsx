@@ -27,7 +27,11 @@ const Home = () => {
 
   return (
     <div className="pt-2">
-      <Slider />
+      <Slider
+        url={
+          "https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=954e71bbb32945b4b9731ac371cd59e1"
+        }
+      />
       <TradingViewWidget className="pb-2" />
       <div className="my-5 sm:flex ">
         <BitcoinNews1 url={url1} headers={headers1} Source="CoinDesk" />
@@ -44,6 +48,11 @@ const Home = () => {
         <BitcoinNews1 url={url2} headers={headers2} Source="CoinTelegraph" />
         <BitcoinNews1 url={url3} headers={headers3} Source="Decrypt" />
       </div>
+      <Slider
+        url={
+          "https://newsapi.org/v2/top-headlines?country=in&category=technology&apiKey=954e71bbb32945b4b9731ac371cd59e1"
+        }
+      />
     </div>
   );
 };

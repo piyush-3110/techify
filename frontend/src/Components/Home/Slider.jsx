@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
 import Marquee from "react-fast-marquee";
-export const Slider = () => {
+export const Slider = ({ url }) => {
   const [news, setNews] = useState([]);
   const getData = async () => {
-    let api =
-      "https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=954e71bbb32945b4b9731ac371cd59e1";
+    let api = url;
     try {
       const response = await fetch(api);
       const data = await response.json();
@@ -20,7 +19,7 @@ export const Slider = () => {
 
   return (
     <>
-      <div>
+      <div className="my-2">
         <Marquee speed={50} pauseOnHover={true}>
           {news.map((data, index) => (
             <div key={index} className="mx-[1rem]">
