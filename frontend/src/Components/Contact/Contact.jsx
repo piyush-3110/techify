@@ -1,4 +1,30 @@
+import { useState } from "react";
+import axios from "axios";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import ClipLoader from "react-spinners/ClipLoader";
 function Contact() {
+  const [name, setName] = useState();
+  const [email, setEmail] = useState();
+  const [message, setMessage] = useState();
+  const [loading, setLoading] = useState(false);
+  const handleClick = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    try {
+      const response = await axios.post("http://localhost:3000/send-email", {
+        name: name,
+        email: email,
+        message: message,
+      });
+      setLoading(false);
+      toast.success(response.data);
+      console.log(response);
+    } catch (error) {
+      setLoading(false);
+      toast.error(error.message);
+    }
+  };
   return (
     <section className="bg-blue-50 dark:bg-slate-800" id="contact">
       <div className="px-4 py-10 mx-auto max-w-7xl sm:px-6 lg:px-8 lg:py-5">
@@ -121,6 +147,8 @@ function Contact() {
                         id="name"
                         autoComplete="given-name"
                         placeholder="Your name"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
                         className="w-full py-2 pl-2 pr-4 mb-2 border border-gray-400 rounded-md shadow-md dark:text-gray-300 sm:mb-0"
                         name="name"
                       />
@@ -133,7 +161,9 @@ function Contact() {
                       <input
                         type="email"
                         id="email"
+                        onChange={(e) => setEmail(e.target.value)}
                         autoComplete="email"
+                        value={email}
                         placeholder="Your email address"
                         className="w-full py-2 pl-2 pr-4 mb-2 border border-gray-400 rounded-md shadow-md dark:text-gray-300 sm:mb-0"
                         name="email"
@@ -147,9 +177,11 @@ function Contact() {
                     ></label>
                     <textarea
                       id="textarea"
+                      onChange={(e) => setMessage(e.target.value)}
                       name="textarea"
                       cols="30"
                       rows="5"
+                      value={message}
                       placeholder="Write your message..."
                       className="w-full py-2 pl-2 pr-4 mb-2 border border-gray-400 rounded-md shadow-md dark:text-gray-300 sm:mb-0"
                     ></textarea>
@@ -158,9 +190,20 @@ function Contact() {
                 <div className="text-center">
                   <button
                     type="submit"
+                    onClick={handleClick}
                     className="w-full px-6 py-3 text-white bg-blue-800 rounded-md font-xl sm:mb-0"
                   >
-                    Send Message
+                    {loading ? (
+                      <ClipLoader
+                        color="#ffffff"
+                        loading={loading}
+                        size={20}
+                        aria-label="Loading Spinner"
+                        data-testid="loader"
+                      />
+                    ) : (
+                      "Send Message"
+                    )}
                   </button>
                 </div>
               </form>

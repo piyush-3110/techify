@@ -1,35 +1,15 @@
 import React from "react";
-import {
-  Button,
-  Dialog,
-  DialogHeader,
-  DialogBody,
-  DialogFooter,
-} from "@material-tailwind/react";
+
 import { WhatsappIcon, WhatsappShareButton } from "react-share";
-export function ModalComponent() {
-  const [open, setOpen] = React.useState(false);
-
-  const handleOpen = () => setOpen(!open);
-
+import { FaCross, FaTimes } from "react-icons/fa";
+export function ModalComponent({ setOpen }) {
   return (
     <>
-      <Button onClick={handleOpen} variant="">
-        Open Dialog
-      </Button>
-      <Dialog
-        open={open}
-        handler={handleOpen}
-        animate={{
-          mount: { scale: 1, y: 0 },
-          unmount: { scale: 0.9, y: -100 },
-        }}
-      >
-        <DialogHeader>Its a simple dialog.</DialogHeader>
-        <DialogBody>
-          <WhatsappIcon />
-        </DialogBody>
-      </Dialog>
+      <div className="fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] h-[20rem] z-2 w-[80%] bg-slate-300 rounded shadow-2xl ease-in-out duration-300">
+        <button onClick={(prev) => setOpen(!prev)}>
+          <FaTimes />
+        </button>
+      </div>
     </>
   );
 }
