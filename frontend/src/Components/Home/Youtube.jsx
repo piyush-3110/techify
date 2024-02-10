@@ -1,29 +1,57 @@
 import { useState, useEffect } from "react";
 import { FaYoutube } from "react-icons/fa";
-
+import { useQuery } from "react-query";
 export const Youtube = () => {
   const [news, setNews] = useState([]);
   const [displayedNews, setDisplayedNews] = useState([]);
   const [showAll, setShowAll] = useState(false);
   const halfUrl = "https://www.youtube.com/watch?v=";
 
-  const getData = async () => {
-    let api =
-      "https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=blockchain%7Cweb3%7Creactjs%7Cwebdev%7Cappdev&regionCode=us&topicId=%2Fm%2F07c1v%20Technology&key=AIzaSyBC-4KDeuJgU_N2oVkODArziFFE5T5W-2Q";
-    try {
-      const response = await fetch(api);
-      const data = await response.json();
-      setNews(data.items);
-      setDisplayedNews(data.items.slice(0, 10)); // Display first 10 items initially
-    } catch (error) {
-      console.log(error.message);
+  // const getData = async () => {
+  //   let api =
+  //     "https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=blockchain%7Cweb3%7Creactjs%7Cwebdev%7Cappdev&regionCode=us&topicId=%2Fm%2F07c1v%20Technology&key=AIzaSyBC-4KDeuJgU_N2oVkODArziFFE5T5W-2Q";
+  //   try {
+  //     const response = await fetch(api);
+  //     const data = await response.json();
+  //     setNews(data.items);
+  //     console.log(data.items);
+
+  //     setDisplayedNews(data.items.slice(0, 10)); // Display first 10 items initially
+  //   } catch (error) {
+  //     // console.log(error.message);
+  //   }
+  // };
+  // useEffect(() => {
+  //   getData();
+  // }, []);
+
+  const api =
+    "https://youtub.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=blockchain%7Cweb3%7Creactjs%7Cwebdev%7Cappdev&regionCode=us&topicId=%2Fm%2F07c1v%20Technology&key=AIzaSyBC-4KDeuJgU_N2oVkODArziFFE5T5W-2Q";
+
+  const { isLoading, data, error } = useQuery(
+    ["url"],
+
+    async () => {
+      try {
+        const response = await fetch(api);
+        if (!response.ok) {
+          console.log("No response");
+        }
+        const result = await response.json();
+        setNews(result.items);
+        setDisplayedNews(result.items.slice(0, 10));
+        console.log(result.items);
+        return result;
+      } catch (error) {
+        console.log(error.message);
+      }
     }
-  };
+  );
 
-  useEffect(() => {
-    getData();
-  }, []);
-
+  if (isLoading) return <div>Loading...</div>;
+  if (error) {
+    return <div>There is an {error}</div>;
+  }
   const handleShowMore = () => {
     setDisplayedNews(news); // Set displayedNews to the entire news array
     setShowAll(true);
@@ -55,7 +83,7 @@ export const Youtube = () => {
                 <img
                   src={data.snippet.thumbnails.high.url}
                   alt="Thumbnail"
-                  className="w-[100%]"
+                  className="w-[100%] hover:scale-125 transition duration-500 cursor-pointer"
                 />
               </a>
               <a

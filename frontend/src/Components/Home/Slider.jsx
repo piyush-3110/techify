@@ -28,7 +28,7 @@ export const Slider = ({ url }) => {
                 key={index}
                 rel="noreferrer"
                 target="_blank"
-                className="text-white text-bold"
+                className="text-white text-bold hover:text-red-500"
               >
                 {" "}
                 {data.title}

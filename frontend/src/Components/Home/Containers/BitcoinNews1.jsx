@@ -1,13 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { FaShareAlt } from "react-icons/fa";
-import {
-  Button,
-  Dialog,
-  DialogHeader,
-  DialogBody,
-  DialogFooter,
-} from "@material-tailwind/react";
 import { ModalComponent } from "../ModalComponent";
 
 const BitcoinNews = ({ url, headers, Source }) => {
@@ -132,13 +125,13 @@ const BitcoinNews = ({ url, headers, Source }) => {
                     />
 
                     <a href={info.url}>
-                      <p className="text-[0.95rem] text-gray-300">
+                      <p className="text-[0.95rem] text-gray-300 hover:text-red-500">
                         {info.title}
                       </p>
                     </a>
                   </div>
                   <div className="h-[15px] w-[15px] ">
-                    <FaShareAlt />
+                    <FaShareAlt onClick={handleOpen} />
                   </div>
                 </div>
                 <hr className="w-[95%] border-gray-700 mt-1" />
@@ -147,7 +140,7 @@ const BitcoinNews = ({ url, headers, Source }) => {
           </div>
         </div>
       </div>
-      {/* {open ? <ModalComponent setShowModal={setShowModal} /> : ""} */}
+      {open ? <ModalComponent setOpen={setOpen} /> : ""}
     </>
   );
 };
