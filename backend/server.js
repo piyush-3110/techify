@@ -28,6 +28,7 @@ async function mainMail(name, email, message) {
     Name: ${name}
     Message: ${message}`,
   };
+
   try {
     await transporter.sendMail(mailOption);
     return Promise.resolve("Message Sent Successfully!");
@@ -44,6 +45,7 @@ app.post("/send-email", async (req, res, next) => {
 
     res.send(`Message Successfully Sent!`);
   } catch (error) {
+    console.log(error);
     res.send("Message Could not be Sent");
   }
 });
