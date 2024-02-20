@@ -7,7 +7,7 @@ const bodyParser = require("body-parser");
 const app = express();
 app.use(
   cors({
-    origin: ["https://techify-frontend.vercel.app/"],
+    origin: "*",
     methods: ["POST", "GET"],
     credentials: true,
   })
