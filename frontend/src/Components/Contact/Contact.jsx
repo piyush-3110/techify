@@ -12,11 +12,14 @@ function Contact() {
     e.preventDefault();
     setLoading(true);
     try {
-      const response = await axios.post("http://localhost:3000/send-email", {
-        name: name,
-        email: email,
-        message: message,
-      });
+      const response = await axios.post(
+        "https://techify-iota.vercel.app/send-email",
+        {
+          name: name,
+          email: email,
+          message: message,
+        }
+      );
       setLoading(false);
       toast.success(response.data);
       console.log(response);
