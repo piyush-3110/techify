@@ -30,7 +30,7 @@ const Home = () => {
     <div className="pt-2">
       <Slider
         url={
-          "https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=954e71bbb32945b4b9731ac371cd59e1"
+          "https://newapi.org/v2/top-headlines?country=us&category=business&apiKey=954e71bbb32945b4b9731ac371cd59e1"
         }
       />
       <TradingViewWidget className="pb-2" />
