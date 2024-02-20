@@ -47,7 +47,7 @@ const Home = () => {
 
       <Slider
         url={
-          "https://newsapi.org/v2/top-headlines?country=in&category=technology&apiKey=954e71bbb32945b4b9731ac371cd59e1"
+          "https://newsai.org/v2/top-headlines?country=in&category=technology&apiKey=954e71bbb32945b4b9731ac371cd59e1"
         }
       />
       <Youtube />
