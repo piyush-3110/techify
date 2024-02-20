@@ -5,7 +5,13 @@ const path = require("path");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const app = express();
-app.use(cors());
+app.use(
+  cors({
+    origin: [],
+    methods: ["POST", "GET"],
+    credentials: true,
+  })
+);
 app.use(bodyParser.json()); // Use bodyParser.json() middleware
 
 app.use(express.urlencoded({ extended: true }));
